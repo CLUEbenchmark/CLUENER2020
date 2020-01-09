@@ -58,3 +58,48 @@
 
   # 数据来源：
     本数据是在清华大学开源的文本分类数据集THUCTC基础上，选出部分数据进行细粒度命名实体标注，原数据来源于Sina News RSS.
+
+
+  # 如何训练提交测试
+  
+  ## 第一步， 生成tf_record
+  修改 data_processor_seq.py 里面 函数的输入输出路径即可
+  ```
+  python data_processor_seq.py
+  ```
+  
+  ## 第二步， 训练ner模型
+  修改 train_sequence_label.py 里面 config字典即可（如模型参数、文件路径等）
+  ```
+  python train_sequence_label.py
+  ```
+  
+  ## 第三步， 加载模型进行测试
+  修改 predict_sequence_label.py 里面 model_path（保存模型的路径）, 以及预测文件路径即可
+  ```
+  python predict_sequence_label.py
+  ```
+  
+  # 评估
+  修改 score.py 里面 pre ，gold文件即可（验证可用），测试阶段不提供哦
+  ```
+  python score.py
+  ```
+  
+| 模型     | 效果 |
+|:-------------:|:-----:|
+| bert-base   |  0.647  |
+| roberta-wwm-large-ext | 0.665  |
+
+各个实体的 得分情况f
+```
+bert base
+{'address': 0.5180533751962323, 'book': 0.6690909090909091, 'company': 0.6646525679758307, 'game': 0.7094188376753506, 'government': 0.7352297592997812, 'movie': 0.5974025974025975, 'name': 0.7596513075965131, 'organization': 0.5411334552102377, 'position': 0.7240051347881901, 'scene': 0.553191489361702}
+
+roberta large wwm
+{'address': 0.5081723625557206, 'book': 0.7333333333333334, 'company': 0.6906906906906908, 'game': 0.7338709677419354, 'government': 0.7428571428571429, 'movie': 0.6333333333333333, 'name': 0.7742749054224464, 'organization': 0.5494505494505494, 'position': 0.7039800995024875, 'scene': 0.5818181818181818}
+```
+
+
+
+  
