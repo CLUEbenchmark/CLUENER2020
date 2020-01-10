@@ -104,6 +104,9 @@ roberta large wwm
 {'address': 0.5081723625557206, 'book': 0.7333333333333334, 'company': 0.6906906906906908, 'game': 0.7338709677419354, 'government': 0.7428571428571429, 'movie': 0.6333333333333333, 'name': 0.7742749054224464, 'organization': 0.5494505494505494, 'position': 0.7039800995024875, 'scene': 0.5818181818181818}
 ```
 
+#### 技术交流与问题讨论QQ群: 836811304 Join us on QQ group
 
 
-  
+#### Cite Us
+CLUENER, CLUE Organization, (2020), GitHub repository, https://github.com/CLUEbenchmark/CLUENER
+
