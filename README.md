@@ -19,32 +19,33 @@
   <a href='http://www.cluebenchmark.com/introduce.html'>数据下载</a>
     
   # 数据分布：
-    训练集：14,459
-    测试集：1,976
+    训练集：10748
+    测试集：1343
 
     按照不同标签类别统计，训练集数据分布如下（注：一条数据中出现的所有实体都进行标注，如果一条数据出现两个地址（address）实体，那么统计地址（address）类别数据的时候，算两条数据）：
-    地址（address）: 3190
-    书名（book）: 1154
-    公司（company）: 3780
-    游戏（game）: 2728
-    政府（goverment）: 2442
-    电影（movie）: 1752
-    姓名（name）: 4816
-    组织机构（organization）: 3754
-    职位（position）: 3990
-    景点（scene）: 1538
+    【训练集】标签数据分布如下：
+    地址（address）:2829
+    书名（book）:1131
+    公司（company）:2897
+    游戏（game）:2325
+    政府（government）:1797
+    电影（movie）:1109
+    姓名（name）:3661
+    组织机构（organization）:3075
+    职位（position）:3052
+    景点（scene）:1462
 
-    训练集数据分布如下：
-    地址（address）: 544
-    书名（book）: 258
-    公司（company）: 479
-    游戏（game）: 281
-    政府（goverment）: 262
-    电影（movie）: 307
-    姓名（name）: 710
-    组织机构（organization）: 515
-    职位（position）: 573
-    景点（scene）: 288
+    【验证集】标签数据分布如下：
+    地址（address）:364
+    书名（book）:152
+    公司（company）:366
+    游戏（game）:287
+    政府（government）:244
+    电影（movie）:150
+    姓名（name）:451
+    组织机构（organization）:344
+    职位（position）:425
+    景点（scene）:199
 
 
   # 数据字段解释：

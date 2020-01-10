@@ -61,4 +61,31 @@ def prepare_len_count():
     open("len_count.json", "w").write(json.dumps(len_count, indent=2))
 
 
-prepare_label()
+def label_count(path):
+    labels = ['address', 'book', 'company', 'game', 'government', 'movie', 'name', 'organization', 'position', 'scene']
+    label2desc = {
+        "address": "地址",
+        "book": "书名",
+        "company": "公司",
+        "game": "游戏",
+        "government": "政府",
+        "movie": "电影",
+        "name": "姓名",
+        "organization": "组织机构",
+        "position": "职位",
+        "scene": "景点"
+    }
+    label_count_dict = {i: 0 for i in labels}
+    for line in open(path):
+        if line.strip():
+            _ = json.loads(line.strip())
+            for k, v in _["label"].items():
+                label_count_dict[k] += len(v)
+    for k, v in label_count_dict.items():
+        print("{}（{}）:{}".format(label2desc[k], k, v))
+    print("\n")
+
+
+# prepare_label()
+# label_count("data/thuctc_train.json")
+# label_count("data/thuctc_valid.json")
