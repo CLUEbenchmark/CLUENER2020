@@ -62,6 +62,10 @@
 # 数据来源：
     本数据是在清华大学开源的文本分类数据集THUCTC基础上，选出部分数据进行细粒度命名实体标注，原数据来源于Sina News RSS.
 
+# 效果对比、一键运行baselineg
+
+  详情见<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/tf_version'>tf_version</a>(test, f1 79.88) 或 <a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/pytorch_version'>pytorch_version</a>(79.63)目录
+  
 #### 技术交流与问题讨论QQ群: 836811304 Join us on QQ group
 
 
