@@ -94,17 +94,19 @@ def prepare_tf_record_data(tokenizer, max_seq_len, label2id, path, out_path):
         len_ = len(_["text"])
         labels = ["O"] * len_
         for k, v in _["label"].items():
-            span = v[list(v.keys())[0]][0]
-            s = span[0]
-            e = span[1] + 1
-            # print(s, e)
-            if e - s == 1:
-                labels[s] = "S_" + k
-            else:
-                labels[s] = "B_" + k
-                for i in range(s + 1, e - 1):
-                    labels[i] = "M_" + k
-                labels[e - 1] = "E_" + k
+            for kk, vv in v.items():
+                span = vv[0]
+                # span = v[list(v.keys())[0]][0]
+                s = span[0]
+                e = span[1] + 1
+                # print(s, e)
+                if e - s == 1:
+                    labels[s] = "S_" + k
+                else:
+                    labels[s] = "B_" + k
+                    for i in range(s + 1, e - 1):
+                        labels[i] = "M_" + k
+                    labels[e - 1] = "E_" + k
             # print()
         # feature = process_one_example(tokenizer, label2id, row[column_name_x1], row[column_name_y],
         #                               max_seq_len=max_seq_len)
