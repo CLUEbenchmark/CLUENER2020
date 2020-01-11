@@ -10,7 +10,7 @@ CURRENT_DIR=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 export CUDA_VISIBLE_DEVICES="0"
 export PRETRAINED_MODELS_DIR=$CURRENT_DIR/prev_trained_model
 export ROBERTA_WWM_LARGE_DIR=$PRETRAINED_MODELS_DIR/$MODEL_NAME
-export GLUE_DATA_DIR=$CURRENT_DIR/../../CLUEdataset
+export GLUE_DATA_DIR=$CURRENT_DIR/CLUEdataset
 
 # download and unzip dataset
 if [ ! -d $GLUE_DATA_DIR ]; then
@@ -52,33 +52,17 @@ echo "Finish download model."
 # run task
 cd $CURRENT_DIR
 echo "Start running..."
-if [ $1 != "predict" ]; then
-    python run_classifier.py \
-      --task_name=$TASK_NAME \
-      --do_train=true \
-      --do_predict=false \
-      --data_dir=$GLUE_DATA_DIR/$TASK_NAME \
-      --vocab_file=$ROBERTA_WWM_LARGE_DIR/vocab.txt \
-      --bert_config_file=$ROBERTA_WWM_LARGE_DIR/bert_config.json \
-      --init_checkpoint=$ROBERTA_WWM_LARGE_DIR/bert_model.ckpt \
-      --max_seq_length=128 \
-      --train_batch_size=32 \
-      --learning_rate=2e-5 \
-      --num_train_epochs=4.0 \
-      --output_dir=$CURRENT_DIR/${TASK_NAME}_output/
-elif [ $1 == "predict" ]; then
-    echo "Start predict..."
-    python run_classifier.py \
-      --task_name=$TASK_NAME \
-      --do_train=false \
-      --do_predict=true \
-      --data_dir=$GLUE_DATA_DIR/$TASK_NAME \
-      --vocab_file=$ROBERTA_WWM_LARGE_DIR/vocab.txt \
-      --bert_config_file=$ROBERTA_WWM_LARGE_DIR/bert_config.json \
-      --init_checkpoint=$ROBERTA_WWM_LARGE_DIR/bert_model.ckpt \
-      --max_seq_length=128 \
-      --train_batch_size=32 \
-      --learning_rate=2e-5 \
-      --num_train_epochs=4.0 \
-      --output_dir=$CURRENT_DIR/${TASK_NAME}_output/
-fi
+
+python run_classifier_roberta_wwm_large.py \
+  --task_name=$TASK_NAME \
+  --do_train=true \
+  --do_predict=true \
+  --data_dir=$GLUE_DATA_DIR/$TASK_NAME \
+  --vocab_file=$ROBERTA_WWM_LARGE_DIR/vocab.txt \
+  --bert_config_file=$ROBERTA_WWM_LARGE_DIR/bert_config.json \
+  --init_checkpoint=$ROBERTA_WWM_LARGE_DIR/bert_model.ckpt \
+  --max_seq_length=128 \
+  --train_batch_size=32 \
+  --learning_rate=2e-5 \
+  --num_train_epochs=4.0 \
+  --output_dir=$CURRENT_DIR/${TASK_NAME}_output
