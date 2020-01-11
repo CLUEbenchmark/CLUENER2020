@@ -66,9 +66,9 @@ python tools/download_clue_data.py --data_dir=./CLUEdatasets --tasks=cluener
 ```shell
 sh run_ner_xxx.sh
 ```
-### 4. 评估
+### 4. 预测
 
-当前默认使用最后一个checkpoint模型作为评估模型，你也可以指定--predict_checkpoints参数进行对应的checkpoint进行评估，比如：
+当前默认使用最后一个checkpoint模型作为预测模型，你也可以指定--predict_checkpoints参数进行对应的checkpoint进行预测，比如：
 
 ```python
 CURRENT_DIR=`pwd`
