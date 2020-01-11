@@ -62,10 +62,13 @@ python tools/download_clue_data.py --data_dir=./CLUEdatasets --tasks=cluener
 |  | └── config.json
 |  | └── pytorch_model.bin
 ```
-### 3. 直接运行对应模式sh脚本，如：
+### 3. 训练：
+
+直接执行对应shell脚本，如：
 ```shell
-sh run_ner_xxx.sh
+sh run_ner_span.sh
 ```
+
 ### 4. 预测
 
 当前默认使用最后一个checkpoint模型作为预测模型，你也可以指定--predict_checkpoints参数进行对应的checkpoint进行预测，比如：
