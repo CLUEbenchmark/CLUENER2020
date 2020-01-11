@@ -49,7 +49,7 @@
 
 
   # 数据字段解释：
-    以train.xlsx为例，数据分为两列：text & label，其中text列代表文本，label列代表文本中出现的所有包含在10个类别中的实体。
+    以train.json为例，数据分为两列：text & label，其中text列代表文本，label列代表文本中出现的所有包含在10个类别中的实体。
     例如：
       text: "北京勘察设计协会副会长兼秘书长周荫如"
       label: {"organization": {"北京勘察设计协会": [[0, 7]]}, "name": {"周荫如": [[15, 17]]}, "position": {"副会长": [[8, 10]], "秘书长": [[12, 14]]}}
@@ -59,9 +59,12 @@
       "position": {"副会长": [[8, 10]], "秘书长": [[12, 14]]}：表示原text中，"副会长" 是类别为 "职位（position）" 的实体, 并且start_index为8，end_index为10，同时，"秘书长" 也是类别为 "职位（position）" 的实体,
       并且start_index为12，end_index为14
 
+# 数据来源：
+    本数据是在清华大学开源的文本分类数据集THUCTC基础上，选出部分数据进行细粒度命名实体标注，原数据来源于Sina News RSS.
+
 #### 技术交流与问题讨论QQ群: 836811304 Join us on QQ group
 
 
-#### Cite Us
+#### 引用我们 Cite Us
 CLUENER, CLUE Organization, (2020), GitHub repository, https://github.com/CLUEbenchmark/CLUENER
 
