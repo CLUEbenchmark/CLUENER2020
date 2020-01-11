@@ -7,8 +7,7 @@
 import json
 
 
-def get_f1_score_label(pre_lines, gold_lines, pre_file="ner_predict.json", gold_file="data/thuctc_valid.json",
-                       label="organization"):
+def get_f1_score_label(pre_lines, gold_lines, label="organization"):
     """
     打分函数
     """
@@ -50,14 +49,7 @@ def get_f1_score(pre_file="ner_predict.json", gold_file="data/thuctc_valid.json"
     return f_score, avg
 
 
-f_score, avg = get_f1_score(pre_file="ner_predict_large.json", gold_file="data/thuctc_valid.json")
+if __name__ == "__main__":
+    f_score, avg = get_f1_score(pre_file="ner_predict_large.json", gold_file="data/thuctc_valid.json")
 
-print(f_score, avg)
-
-"""
-bert base
-{'address': 0.5180533751962323, 'book': 0.6690909090909091, 'company': 0.6646525679758307, 'game': 0.7094188376753506, 'government': 0.7352297592997812, 'movie': 0.5974025974025975, 'name': 0.7596513075965131, 'organization': 0.5411334552102377, 'position': 0.7240051347881901, 'scene': 0.553191489361702} 0.6471829433597345
-
-roberta large wwm
-{'address': 0.5081723625557206, 'book': 0.7333333333333334, 'company': 0.6906906906906908, 'game': 0.7338709677419354, 'government': 0.7428571428571429, 'movie': 0.6333333333333333, 'name': 0.7742749054224464, 'organization': 0.5494505494505494, 'position': 0.7039800995024875, 'scene': 0.5818181818181818} 0.6651781566705821
-"""
+    print(f_score, avg)
