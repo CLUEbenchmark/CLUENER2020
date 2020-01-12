@@ -143,6 +143,17 @@ def predict(text):
             #     print(start, labels)
             start = None
         index += 1
+    if start is not None:
+        # print(start)
+        label = result[start][2:]
+        if labels.get(label):
+            te_ = text[start:index]
+            # print(te_, labels)
+            labels[label][te_] = [[start, index - 1]]
+        else:
+            te_ = text[start:index]
+            # print(te_, labels)
+            labels[label] = {te_: [[start, index - 1]]}
     # print(labels)
     return labels
 
