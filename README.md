@@ -1,9 +1,12 @@
-  CLUENER 细粒度命名实体识别 
+  # CLUENER 细粒度命名实体识别 
+  
+  **更多细节请参考我们的技术报告：https://arxiv.org/abs/2001.04351**
+  ![./pics/header.png](https://github.com/CLUEbenchmark/CLUENER2020/blob/master/cluener.png)
 
-  # 数据类别：
+  ## 数据类别：
     数据分为10个标签类别，分别为: 地址（address），书名（book），公司（company），游戏（game），政府（government），电影（movie），姓名（name），组织机构（organization），职位（position），景点（scene）
 
-  # 标签类别定义 & 标注规则：
+  ## 标签类别定义 & 标注规则：
     地址（address）: **省**市**区**街**号，**路，**街道，**村等（如单独出现也标记）。地址是标记尽量完全的, 标记到最细。
     书名（book）: 小说，杂志，习题集，教科书，教辅，地图册，食谱，书店里能买到的一类书籍，包含电子书。
     公司（company）: **公司，**集团，**银行（央行，中国人民银行除外，二者属于政府机构）, 如：新东方，包含新华网/中国军网等。
@@ -15,10 +18,10 @@
     职位（position）: 古时候的职称：巡抚，知州，国师等。现代的总经理，记者，总裁，艺术家，收藏家等。
     景点（scene）: 常见旅游景点如：长沙公园，深圳动物园，海洋馆，植物园，黄河，长江等。
   
-  # 数据下载地址：
+  ## 数据下载地址：
   <a href='http://www.cluebenchmark.com/introduce.html'>数据下载</a>
     
-  # 数据分布：
+  ## 数据分布：
     训练集：10748
     验证集集：1343
 
@@ -48,7 +51,7 @@
     景点（scene）:199
 
 
-  # 数据字段解释：
+  ## 数据字段解释：
     以train.json为例，数据分为两列：text & label，其中text列代表文本，label列代表文本中出现的所有包含在10个类别中的实体。
     例如：
       text: "北京勘察设计协会副会长兼秘书长周荫如"
@@ -59,10 +62,10 @@
       "position": {"副会长": [[8, 10]], "秘书长": [[12, 14]]}：表示原text中，"副会长" 是类别为 "职位（position）" 的实体, 并且start_index为8，end_index为10，同时，"秘书长" 也是类别为 "职位（position）" 的实体,
       并且start_index为12，end_index为14
 
-# 数据来源：
+## 数据来源：
     本数据是在清华大学开源的文本分类数据集THUCTC基础上，选出部分数据进行细粒度命名实体标注，原数据来源于Sina News RSS.
 
-# 效果对比、一键运行基线模型
+## 效果对比、一键运行基线模型
 
   | 模型     | <a href='https://www.cluebenchmarks.com/ner.html'>线上效果f1</a> |
 |:-------------:|:-----:|
@@ -82,3 +85,12 @@
 #### 引用我们 Cite Us
 CLUENER, CLUE Organization, (2020), GitHub repository, https://github.com/CLUEbenchmark/CLUENER
 
+如果本目录中的内容对你的研究工作有所帮助，请在文献中引用下述报告：https://arxiv.org/abs/2001.04351
+```
+@article{xu2020cluener2020,
+  title={CLUENER2020: Fine-grained Name Entity Recognition for Chinese},
+  author={Xu, Liang and Dong, Qianqian and Yu, Cong and Tian, Yin and Liu Weitang and Li Lu and Zhang Xuanwei},
+  journal={arXiv preprint arXiv:2001.04351},
+  year={2020}
+ }
+```
