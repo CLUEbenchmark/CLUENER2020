@@ -89,7 +89,7 @@ CLUENER, CLUE Organization, (2020), GitHub repository, https://github.com/CLUEbe
 ```
 @article{xu2020cluener2020,
   title={CLUENER2020: Fine-grained Name Entity Recognition for Chinese},
-  author={Xu, Liang and Dong, Qianqian and Yu, Cong and Tian, Yin and Liu Weitang and Li Lu and Zhang Xuanwei},
+  author={Xu, Liang and Dong, Qianqian and Yu, Cong and Tian, Yin and Liu, Weitang and Li, Lu and Zhang, Xuanwei},
   journal={arXiv preprint arXiv:2001.04351},
   year={2020}
  }
