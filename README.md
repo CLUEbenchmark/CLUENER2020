@@ -73,6 +73,21 @@
 | RoBERTa-wwm-large-ext | 80.42 |
 | Bi-Lstm + CRF | 70.00 |
 
+各个实体的评测结果：
+
+| 实体     | bilstm+crf | bert-base | roberta-wwm-large-ext | Human Performance |
+|:-------------:|:-----:|:-----:|:-----:|:-----:|
+| Person Name   | 74.04 | 88.75 | **89.09** | 74.49 |
+| Organization  | 75.96 | 79.43 | **82.34** | 65.41 |
+| Position      | 70.16 | 78.89 | **79.62** | 55.38 |
+| Company       | 72.27 | 81.42 | **83.02** | 49.32 |
+| Address       | 45.50 | 60.89 | **62.63** | 43.04 |
+| Game          | 85.27 | 86.42 | **86.80** | 80.39 |
+| Government    | 77.25 | 87.03 | **88.17** | 79.27 |
+| Scene         | 52.42 | 65.10 | **70.49** | 51.85 |
+| Book          | 67.20 | 73.68 | **74.60** | 71.70 |
+| Movie         | 78.97 | 85.82 | **87.46** | 63.21 |
+
   tf版本baseline：<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/tf_version'>tf_version</a>
   (test, f1 79.88) 
   
@@ -83,7 +98,6 @@
 
 
 #### 引用我们 Cite Us
-CLUENER, CLUE Organization, (2020), GitHub repository, https://github.com/CLUEbenchmark/CLUENER
 
 如果本目录中的内容对你的研究工作有所帮助，请在文献中引用下述报告：https://arxiv.org/abs/2001.04351
 ```
