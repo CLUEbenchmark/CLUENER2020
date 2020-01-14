@@ -65,7 +65,7 @@
 ## 数据来源：
     本数据是在清华大学开源的文本分类数据集THUCTC基础上，选出部分数据进行细粒度命名实体标注，原数据来源于Sina News RSS.
 
-## 效果对比、一键运行基线模型
+## 效果对比
 
   | 模型     | <a href='https://www.cluebenchmarks.com/ner.html'>线上效果f1</a> |
 |:-------------:|:-----:|
@@ -87,7 +87,9 @@
 | Scene         | 52.42 | 65.10 | **70.49** | 51.85 |
 | Book          | 67.20 | 73.68 | **74.60** | 71.70 |
 | Movie         | 78.97 | 85.82 | **87.46** | 63.21 |
-| Overall@Macro |   70.00 | 78.82  | **80.42 ** | 63.41  |
+| Overall@Macro |   70.00 | 78.82  | **80.42** | 63.41  |
+
+## 基线模型（一键运行）
 
   tf版本baseline：<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/tf_version'>tf_version</a>
   (test, f1 79.88) 
