@@ -28,17 +28,32 @@
       ```
   
   ### 评估
-  修改 score.py 里面 pre ，gold文件即可（验证可用），测试阶段不提供哦
+  以F1-Score为评测指标，修改 score.py 里面 pre ，gold文件即可（验证可用），测试阶段不提供哦
   ```
   python score.py
   ```
   
 | 模型     | <a href='https://www.cluebenchmarks.com/ner.html'>线上效果f1</a> |
 |:-------------:|:-----:|
-| bert-base   |  75.68  |
-| roberta-wwm-large-ext | 79.88 |
+| bilstm+crf  |  70.00  |
+| bert-base   |  78.82  |
+| roberta-wwm-large-ext | **80.42** |
+|Human Performance|63.41|
 
-各个实体的 得分情况f
-```
-TODO
-```
+各个实体的评测结果：
+
+
+| 实体     | bilstm+crf | bert-base | roberta-wwm-large-ext | Human Performance |
+|:-------------:|:-----:|:-----:|:-----:|:-----:|
+| Person Name   | 74.04 | 88.75 | **89.09** | 74.49 |
+| Organization  | 75.96 | 79.43 | **82.34** | 65.41 |
+| Position      | 70.16 | 78.89 | **79.62** | 55.38 |
+| Company       | 72.27 | 81.42 | **83.02** | 49.32 |
+| Address       | 45.50 | 60.89 | **62.63** | 43.04 |
+| Game          | 85.27 | 86.42 | **86.80** | 80.39 |
+| Government    | 77.25 | 87.03 | **88.17** | 79.27 |
+| Scene         | 52.42 | 65.10 | **70.49** | 51.85 |
+| Book          | 67.20 | 73.68 | **74.60** | 71.70 |
+| Movie         | 78.97 | 85.82 | **87.46** | 63.21 |
+
+更具体的评测结果，请参考我们的技术报告：https://arxiv.org/abs/2001.04351
