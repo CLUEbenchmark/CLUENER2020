@@ -2,6 +2,8 @@
 
   # 如何训练、提交测试
   
+  环境：Python 3 & Tensorflow 1.x，如1.14; 
+  
   ## 模型1 一键运行RoBERTa-wwm-large
   
   nohup bash run_classifier_roberta_wwm_large.sh &
