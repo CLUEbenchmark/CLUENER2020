@@ -66,9 +66,9 @@
 
   | 模型     | <a href='https://www.cluebenchmarks.com/ner.html'>线上效果f1</a> |
 |:-------------:|:-----:|
-| Bert-base   |  75.68  |
-| RoBERTa-wwm-large-ext | 79.88 |
-| Bi-Lstm + CRF | 57.51 |
+| Bert-base   |  78.82  |
+| RoBERTa-wwm-large-ext | 80.42 |
+| Bi-Lstm + CRF | 70.00 |
 
   tf版本baseline：<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/tf_version'>tf_version</a>
   (test, f1 79.88) 
