@@ -73,7 +73,7 @@
 | RoBERTa-wwm-large-ext | 80.42 |
 | Bi-Lstm + CRF | 70.00 |
 
-各个实体的评测结果：
+各个实体的评测结果(F1 score)：
 
 | 实体     | bilstm+crf | bert-base | roberta-wwm-large-ext | Human Performance |
 |:-------------:|:-----:|:-----:|:-----:|:-----:|
@@ -87,6 +87,7 @@
 | Scene         | 52.42 | 65.10 | **70.49** | 51.85 |
 | Book          | 67.20 | 73.68 | **74.60** | 71.70 |
 | Movie         | 78.97 | 85.82 | **87.46** | 63.21 |
+| Overall@Macro |   70.00 | 78.82  | **80.42 ** | 63.41  |
 
   tf版本baseline：<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/tf_version'>tf_version</a>
   (test, f1 79.88) 
