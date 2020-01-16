@@ -1,6 +1,6 @@
   # CLUENER 细粒度命名实体识别 
   
-  **更多细节请参考我们的技术报告(https://github.com/CLUEbenchmark/CLUENER2020/blob/master/CLUENER2020_paper.pdf)：https://arxiv.org/abs/2001.04351**
+  **更多细节请参考我们的技术报告( https://github.com/CLUEbenchmark/CLUENER2020/blob/master/CLUENER2020_paper.pdf )：https://arxiv.org/abs/2001.04351**
   ![./pics/header.png](https://github.com/CLUEbenchmark/CLUENER2020/blob/master/cluener.png)
 
   ## 数据类别：
