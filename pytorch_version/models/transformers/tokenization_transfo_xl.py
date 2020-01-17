@@ -22,6 +22,7 @@ from __future__ import (absolute_import, division, print_function,
 import glob
 import logging
 import os
+import pickle
 import sys
 from collections import Counter, OrderedDict
 from io import open
@@ -36,10 +37,10 @@ try:
 except ImportError:
     pass
 
-# if sys.version_info[0] == 2:
-#     import cPickle as pickle
-# else:
-#     import pickle
+try:
+    import cPickle as pickle
+except ImportError:
+    import pickle
 
 
 logger = logging.getLogger(__name__)
