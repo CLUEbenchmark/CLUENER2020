@@ -16,7 +16,7 @@ CLUENER 细粒度命名实体识别
 1. 下载CLUE_NER数据集，运行以下命令：
 
 ```python
-python download_clue_data.py --data_dir=./datasets --tasks=cluener
+python download_clue_data.py --data_dir=./dataset --tasks=cluener
 ```
 
 2. 运行下列命令，进行模型训练：
