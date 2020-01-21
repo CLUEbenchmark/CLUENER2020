@@ -91,12 +91,13 @@
 
 ## 基线模型（一键运行）
 
-  tf版本bert系列：<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/tf_version'>tf_version</a>
-  (test, f1 79.88) 
+  1.tf版本bert系列：<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/tf_version'>tf_version</a>
+  (test, f1 80.42) 
   
-  或 pytorch版本baseline：<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/pytorch_version'>pytorch_version</a>(79.63) 
+  2.pytorch版本baseline：<a href='https://github.com/CLUEbenchmark/CLUENER2020/tree/master/pytorch_version'>pytorch_version</a>(79.63) 
  
- bilistm+crf的baseline: <a href="https://github.com/CLUEbenchmark/CLUENER2020/tree/master/bilstm_crf_pytorch">bilstm+crf</a>
+  3.bilistm+crf的baseline: <a href="https://github.com/CLUEbenchmark/CLUENER2020/tree/master/bilstm_crf_pytorch">bilstm+crf</a>
+  (test, f1 70.0) 
 
 #### 技术交流与问题讨论QQ群: 836811304 Join us on QQ group
 
