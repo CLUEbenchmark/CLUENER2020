@@ -1,10 +1,10 @@
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from .crf import CRF
+from .layers.crf import CRF
 from .transformers.modeling_bert import BertPreTrainedModel
 from .transformers.modeling_bert import BertModel
-from .linears import PoolerEndLogits, PoolerStartLogits
+from .layers.linears import PoolerEndLogits, PoolerStartLogits
 from torch.nn import CrossEntropyLoss
 from losses.focal_loss import FocalLoss
 from losses.label_smoothing import LabelSmoothingCrossEntropy
@@ -21,11 +21,7 @@ class BertSoftmaxForNer(BertPreTrainedModel):
 
     def forward(self, input_ids, attention_mask=None, token_type_ids=None,
                 position_ids=None, head_mask=None, labels=None):
-        outputs = self.bert(input_ids,
-                            attention_mask=attention_mask,
-                            token_type_ids=token_type_ids,
-                            position_ids=position_ids,
-                            head_mask=head_mask)
+        outputs = self.bert(input_ids = input_ids,attention_mask=attention_mask,token_type_ids=token_type_ids)
         sequence_output = outputs[0]
         sequence_output = self.dropout(sequence_output)
         logits = self.classifier(sequence_output)
@@ -50,23 +46,23 @@ class BertSoftmaxForNer(BertPreTrainedModel):
         return outputs  # (loss), scores, (hidden_states), (attentions)
 
 class BertCrfForNer(BertPreTrainedModel):
-    def __init__(self, config, label2id, device):
+    def __init__(self, config):
         super(BertCrfForNer, self).__init__(config)
         self.bert = BertModel(config)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
-        self.classifier = nn.Linear(config.hidden_size, len(label2id))
-        self.crf = CRF(tagset_size=len(label2id), tag_dictionary=label2id, device=device, is_bert=True)
+        self.classifier = nn.Linear(config.hidden_size, config.num_labels)
+        self.crf = CRF(num_tags=config.num_labels, batch_first=True)
         self.init_weights()
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None,labels=None,input_lens=None):
-        outputs = self.bert(input_ids, token_type_ids, attention_mask)
+        outputs =self.bert(input_ids = input_ids,attention_mask=attention_mask,token_type_ids=token_type_ids)
         sequence_output = outputs[0]
         sequence_output = self.dropout(sequence_output)
         logits = self.classifier(sequence_output)
         outputs = (logits,)
         if labels is not None:
-            loss = self.crf.calculate_loss(logits, tag_list=labels, lengths=input_lens)
-            outputs =(loss,)+outputs
+            loss = self.crf(emissions = logits, tags=labels, mask=attention_mask)
+            outputs =(-1*loss,)+outputs
         return outputs # (loss), scores
 
 class BertSpanForNer(BertPreTrainedModel):
@@ -85,7 +81,7 @@ class BertSpanForNer(BertPreTrainedModel):
         self.init_weights()
 
     def forward(self, input_ids, token_type_ids=None, attention_mask=None, start_positions=None,end_positions=None):
-        outputs = self.bert(input_ids, token_type_ids, attention_mask)
+        outputs = self.bert(input_ids = input_ids,attention_mask=attention_mask,token_type_ids=token_type_ids)
         sequence_output = outputs[0]
         sequence_output = self.dropout(sequence_output)
         start_logits = self.start_fc(sequence_output)

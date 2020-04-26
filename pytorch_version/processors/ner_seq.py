@@ -107,16 +107,16 @@ def convert_examples_to_features(examples,label_list,max_seq_length,tokenizer,
         # used as as the "sentence vector". Note that this only makes sense because
         # the entire model is fine-tuned.
         tokens += [sep_token]
-        label_ids += [label_map[sep_token]]
+        label_ids += [label_map['O']]
         segment_ids = [sequence_a_segment_id] * len(tokens)
 
         if cls_token_at_end:
             tokens += [cls_token]
-            label_ids += [label_map[cls_token]]
+            label_ids += [label_map['O']]
             segment_ids += [cls_token_segment_id]
         else:
             tokens = [cls_token] + tokens
-            label_ids = [label_map[cls_token]] + label_ids
+            label_ids = [label_map['O']] + label_ids
             segment_ids = [cls_token_segment_id] + segment_ids
 
         input_ids = tokenizer.convert_tokens_to_ids(tokens)
@@ -154,6 +154,48 @@ def convert_examples_to_features(examples,label_list,max_seq_length,tokenizer,
                                       segment_ids=segment_ids, label_ids=label_ids))
     return features
 
+
+class CnerProcessor(DataProcessor):
+    """Processor for the chinese ner data set."""
+
+    def get_train_examples(self, data_dir):
+        """See base class."""
+        return self._create_examples(self._read_text(os.path.join(data_dir, "train.char.bmes")), "train")
+
+    def get_dev_examples(self, data_dir):
+        """See base class."""
+        return self._create_examples(self._read_text(os.path.join(data_dir, "dev.char.bmes")), "dev")
+
+    def get_test_examples(self, data_dir):
+        """See base class."""
+        return self._create_examples(self._read_text(os.path.join(data_dir, "test.char.bmes")), "test")
+
+    def get_labels(self):
+        """See base class."""
+        return ["X",'B-CONT','B-EDU','B-LOC','B-NAME','B-ORG','B-PRO','B-RACE','B-TITLE',
+                'I-CONT','I-EDU','I-LOC','I-NAME','I-ORG','I-PRO','I-RACE','I-TITLE',
+                'O','S-NAME','S-ORG','S-RACE',"[START]", "[END]"]
+
+    def _create_examples(self, lines, set_type):
+        """Creates examples for the training and dev sets."""
+        examples = []
+        for (i, line) in enumerate(lines):
+            if i == 0:
+                continue
+            guid = "%s-%s" % (set_type, i)
+            text_a= line['words']
+            # BIOS
+            labels = []
+            for x in line['labels']:
+                if 'M-' in x:
+                    labels.append(x.replace('M-','I-'))
+                elif 'E-' in x:
+                    labels.append(x.replace('E-', 'I-'))
+                else:
+                    labels.append(x)
+            examples.append(InputExample(guid=guid, text_a=text_a, labels=labels))
+        return examples
+
 class CluenerProcessor(DataProcessor):
     """Processor for the chinese ner data set."""
 
@@ -177,7 +219,7 @@ class CluenerProcessor(DataProcessor):
                 'I-organization', 'I-position','I-scene',
                 "S-address", "S-book", "S-company", 'S-game', 'S-government', 'S-movie',
                 'S-name', 'S-organization', 'S-position',
-                'S-scene','O',"[CLS]", "[SEP]"]
+                'S-scene','O',"[START]", "[END]"]
 
     def _create_examples(self, lines, set_type):
         """Creates examples for the training and dev sets."""
@@ -189,6 +231,8 @@ class CluenerProcessor(DataProcessor):
             labels = line['labels']
             examples.append(InputExample(guid=guid, text_a=text_a, labels=labels))
         return examples
+
 ner_processors = {
+    "cner": CnerProcessor,
     'cluener':CluenerProcessor
 }

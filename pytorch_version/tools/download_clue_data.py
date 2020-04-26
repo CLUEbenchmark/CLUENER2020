@@ -75,3 +75,7 @@ def main(arguments):
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))
+
+'''
+python tools/download_clue_data.py --data_dir=./CLUEdatasets --tasks=cluener
+'''

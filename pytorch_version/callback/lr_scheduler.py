@@ -4,19 +4,10 @@ import warnings
 from torch.optim.optimizer import Optimizer
 from torch.optim.lr_scheduler import LambdaLR
 
-__all__ = ['CustomDecayLR',
-           'BertLR',
-           'CyclicLR',
-           'ReduceLROnPlateau',
-           'ReduceLRWDOnPlateau',
-           'CosineLRWithRestarts',
-           ]
-
 def get_constant_schedule(optimizer, last_epoch=-1):
     """ Create a schedule with a constant learning rate.
     """
     return LambdaLR(optimizer, lambda _: 1, last_epoch=last_epoch)
-
 
 def get_constant_schedule_with_warmup(optimizer, num_warmup_steps, last_epoch=-1):
     """ Create a schedule with a constant learning rate preceded by a warmup
