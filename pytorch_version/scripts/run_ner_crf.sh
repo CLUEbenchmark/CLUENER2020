@@ -11,7 +11,7 @@ python run_ner_crf.py \
   --do_train \
   --do_eval \
   --do_lower_case \
-  --data_dir=$GLUE_DIR/${TASK_NAME}/ \
+  --data_dir=$CLUE_DIR/${TASK_NAME}/ \
   --train_max_seq_length=128 \
   --eval_max_seq_length=512 \
   --per_gpu_train_batch_size=24 \
