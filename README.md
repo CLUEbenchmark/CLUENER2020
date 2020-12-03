@@ -19,7 +19,7 @@
     景点（scene）: 常见旅游景点如：长沙公园，深圳动物园，海洋馆，植物园，黄河，长江等。
   
   ## 数据下载地址：
-  <a href='http://www.cluebenchmark.com/introduce.html'>数据下载</a>
+  <a href='https://www.CLUEbenchmarks.com'>数据下载</a>
     
   ## 数据分布：
     训练集：10748
