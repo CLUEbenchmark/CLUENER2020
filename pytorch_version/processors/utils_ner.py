@@ -48,7 +48,7 @@ class DataProcessor(object):
     @classmethod
     def _read_text(self,input_file):
         lines = []
-        with open(input_file,'r') as f:
+        with open(input_file, 'r', encoding="utf-8") as f:
             words = []
             labels = []
             for line in f:
