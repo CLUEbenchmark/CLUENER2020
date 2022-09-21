@@ -3,7 +3,7 @@
   **更多细节请参考我们的 <a href='https://github.com/CLUEbenchmark/CLUENER2020/blob/master/CLUENER2020_paper.pdf'>技术报告</a>： https://arxiv.org/abs/2001.04351**
   ![./pics/header.png](https://github.com/CLUEbenchmark/CLUENER2020/blob/master/cluener.png)
 
-体验Demo：<a href="https://www.modelfun.cn" target="_" style="color:red">数据集自动标注工具--释放AI潜力！</a>
+<a href="https://www.cluebenchmarks.com/clueai.html">三分钟定制一个NLP的API--不需要标注数据、训练和算力、社区版免费</a>
 
   ## 数据类别：
     数据分为10个标签类别，分别为: 地址（address），书名（book），公司（company），游戏（game），政府（government），电影（movie），姓名（name），组织机构（organization），职位（position），景点（scene）
