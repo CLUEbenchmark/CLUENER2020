@@ -375,7 +375,7 @@ def main():
     args.output_dir = args.output_dir + '{}'.format(args.model_type)
     if not os.path.exists(args.output_dir):
         os.mkdir(args.output_dir)
-    time_ = time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())
+    time_ = time.strftime("%Y-%m-%d-%H-%M-%S", time.localtime())
     init_logger(log_file=args.output_dir + f'/{args.model_type}-{args.task_name}-{time_}.log')
     if os.path.exists(args.output_dir) and os.listdir(
             args.output_dir) and args.do_train and not args.overwrite_output_dir:
